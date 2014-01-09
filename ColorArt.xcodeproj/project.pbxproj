@@ -14,8 +14,34 @@
 		18DFE52A16697F1500792C2E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18DFE52816697F1500792C2E /* Credits.rtf */; };
 		18DFE52D16697F1500792C2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFE52C16697F1500792C2E /* AppDelegate.m */; };
 		18DFE53016697F1600792C2E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DFE52E16697F1600792C2E /* MainMenu.xib */; };
+		4A12EB3F187C5E77002AAD6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB3E187C5E77002AAD6F /* Foundation.framework */; };
+		4A12EB41187C5E77002AAD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB40187C5E77002AAD6F /* CoreGraphics.framework */; };
+		4A12EB43187C5E77002AAD6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB42187C5E77002AAD6F /* UIKit.framework */; };
+		4A12EB49187C5E77002AAD6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A12EB47187C5E77002AAD6F /* InfoPlist.strings */; };
+		4A12EB4B187C5E77002AAD6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12EB4A187C5E77002AAD6F /* main.m */; };
+		4A12EB4F187C5E77002AAD6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12EB4E187C5E77002AAD6F /* AppDelegate.m */; };
+		4A12EB51187C5E77002AAD6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A12EB50187C5E77002AAD6F /* Images.xcassets */; };
+		4A12EB58187C5E77002AAD6F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB57187C5E77002AAD6F /* XCTest.framework */; };
+		4A12EB59187C5E77002AAD6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB3E187C5E77002AAD6F /* Foundation.framework */; };
+		4A12EB5A187C5E77002AAD6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A12EB42187C5E77002AAD6F /* UIKit.framework */; };
+		4A12EB62187C5E77002AAD6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A12EB60187C5E77002AAD6F /* InfoPlist.strings */; };
+		4A12EB64187C5E77002AAD6F /* ColorArt_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12EB63187C5E77002AAD6F /* ColorArt_iOSTests.m */; };
+		4A12EB6B187C6007002AAD6F /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FE707A1677DE9300BE484D /* SLColorArt.m */; };
+		4A12EB6D187DB3CB002AAD6F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A12EB6C187DB3CB002AAD6F /* Storyboard.storyboard */; };
+		4A12EB70187DB417002AAD6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12EB6F187DB417002AAD6F /* ViewController.m */; };
+		4A12EB71187DB7B4002AAD6F /* PCFadedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830D098166E810C00FFEBD5 /* PCFadedImageView.m */; };
 		93FE707B1677DE9300BE484D /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FE707A1677DE9300BE484D /* SLColorArt.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A12EB5B187C5E77002AAD6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18DFE50C16697F1500792C2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A12EB3C187C5E77002AAD6F;
+			remoteInfo = ColorArt_iOS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1830D097166E810C00FFEBD5 /* PCFadedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCFadedImageView.h; sourceTree = "<group>"; };
@@ -33,6 +59,25 @@
 		18DFE52B16697F1500792C2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18DFE52C16697F1500792C2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18DFE52F16697F1600792C2E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4A12EB3D187C5E77002AAD6F /* ColorArt_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorArt_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A12EB3E187C5E77002AAD6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4A12EB40187C5E77002AAD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4A12EB42187C5E77002AAD6F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		4A12EB46187C5E77002AAD6F /* ColorArt_iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorArt_iOS-Info.plist"; sourceTree = "<group>"; };
+		4A12EB48187C5E77002AAD6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4A12EB4A187C5E77002AAD6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A12EB4C187C5E77002AAD6F /* ColorArt_iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorArt_iOS-Prefix.pch"; sourceTree = "<group>"; };
+		4A12EB4D187C5E77002AAD6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4A12EB4E187C5E77002AAD6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4A12EB50187C5E77002AAD6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4A12EB56187C5E77002AAD6F /* ColorArt_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorArt_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A12EB57187C5E77002AAD6F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4A12EB5F187C5E77002AAD6F /* ColorArt_iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorArt_iOSTests-Info.plist"; sourceTree = "<group>"; };
+		4A12EB61187C5E77002AAD6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4A12EB63187C5E77002AAD6F /* ColorArt_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorArt_iOSTests.m; sourceTree = "<group>"; };
+		4A12EB6C187DB3CB002AAD6F /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		4A12EB6E187DB417002AAD6F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4A12EB6F187DB417002AAD6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		93FE70791677DE9300BE484D /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
 		93FE707A1677DE9300BE484D /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +91,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A12EB3A187C5E77002AAD6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB41187C5E77002AAD6F /* CoreGraphics.framework in Frameworks */,
+				4A12EB43187C5E77002AAD6F /* UIKit.framework in Frameworks */,
+				4A12EB3F187C5E77002AAD6F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A12EB53187C5E77002AAD6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB58187C5E77002AAD6F /* XCTest.framework in Frameworks */,
+				4A12EB5A187C5E77002AAD6F /* UIKit.framework in Frameworks */,
+				4A12EB59187C5E77002AAD6F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				18DFE51F16697F1500792C2E /* ColorArt */,
+				4A12EB44187C5E77002AAD6F /* ColorArt_iOS */,
+				4A12EB5D187C5E77002AAD6F /* ColorArt_iOSTests */,
 				18DFE51816697F1500792C2E /* Frameworks */,
 				18DFE51616697F1500792C2E /* Products */,
 			);
@@ -62,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				18DFE51516697F1500792C2E /* ColorArt.app */,
+				4A12EB3D187C5E77002AAD6F /* ColorArt_iOS.app */,
+				4A12EB56187C5E77002AAD6F /* ColorArt_iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				18DFE51916697F1500792C2E /* Cocoa.framework */,
+				4A12EB3E187C5E77002AAD6F /* Foundation.framework */,
+				4A12EB40187C5E77002AAD6F /* CoreGraphics.framework */,
+				4A12EB42187C5E77002AAD6F /* UIKit.framework */,
+				4A12EB57187C5E77002AAD6F /* XCTest.framework */,
 				18DFE51B16697F1500792C2E /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -112,6 +185,49 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4A12EB44187C5E77002AAD6F /* ColorArt_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4A12EB4D187C5E77002AAD6F /* AppDelegate.h */,
+				4A12EB4E187C5E77002AAD6F /* AppDelegate.m */,
+				4A12EB50187C5E77002AAD6F /* Images.xcassets */,
+				4A12EB45187C5E77002AAD6F /* Supporting Files */,
+				4A12EB6C187DB3CB002AAD6F /* Storyboard.storyboard */,
+				4A12EB6E187DB417002AAD6F /* ViewController.h */,
+				4A12EB6F187DB417002AAD6F /* ViewController.m */,
+			);
+			path = ColorArt_iOS;
+			sourceTree = "<group>";
+		};
+		4A12EB45187C5E77002AAD6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A12EB46187C5E77002AAD6F /* ColorArt_iOS-Info.plist */,
+				4A12EB47187C5E77002AAD6F /* InfoPlist.strings */,
+				4A12EB4A187C5E77002AAD6F /* main.m */,
+				4A12EB4C187C5E77002AAD6F /* ColorArt_iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A12EB5D187C5E77002AAD6F /* ColorArt_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A12EB63187C5E77002AAD6F /* ColorArt_iOSTests.m */,
+				4A12EB5E187C5E77002AAD6F /* Supporting Files */,
+			);
+			path = ColorArt_iOSTests;
+			sourceTree = "<group>";
+		};
+		4A12EB5E187C5E77002AAD6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A12EB5F187C5E77002AAD6F /* ColorArt_iOSTests-Info.plist */,
+				4A12EB60187C5E77002AAD6F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,6 +248,41 @@
 			productReference = 18DFE51516697F1500792C2E /* ColorArt.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4A12EB3C187C5E77002AAD6F /* ColorArt_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A12EB69187C5E77002AAD6F /* Build configuration list for PBXNativeTarget "ColorArt_iOS" */;
+			buildPhases = (
+				4A12EB39187C5E77002AAD6F /* Sources */,
+				4A12EB3A187C5E77002AAD6F /* Frameworks */,
+				4A12EB3B187C5E77002AAD6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColorArt_iOS;
+			productName = ColorArt_iOS;
+			productReference = 4A12EB3D187C5E77002AAD6F /* ColorArt_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A12EB55187C5E77002AAD6F /* ColorArt_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A12EB6A187C5E77002AAD6F /* Build configuration list for PBXNativeTarget "ColorArt_iOSTests" */;
+			buildPhases = (
+				4A12EB52187C5E77002AAD6F /* Sources */,
+				4A12EB53187C5E77002AAD6F /* Frameworks */,
+				4A12EB54187C5E77002AAD6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A12EB5C187C5E77002AAD6F /* PBXTargetDependency */,
+			);
+			name = ColorArt_iOSTests;
+			productName = ColorArt_iOSTests;
+			productReference = 4A12EB56187C5E77002AAD6F /* ColorArt_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,6 +291,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Wade Cosgrove";
+				TargetAttributes = {
+					4A12EB55187C5E77002AAD6F = {
+						TestTargetID = 18DFE51416697F1500792C2E;
+					};
+				};
 			};
 			buildConfigurationList = 18DFE50F16697F1500792C2E /* Build configuration list for PBXProject "ColorArt" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -154,6 +310,8 @@
 			projectRoot = "";
 			targets = (
 				18DFE51416697F1500792C2E /* ColorArt */,
+				4A12EB3C187C5E77002AAD6F /* ColorArt_iOS */,
+				4A12EB55187C5E77002AAD6F /* ColorArt_iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -166,6 +324,24 @@
 				18DFE52416697F1500792C2E /* InfoPlist.strings in Resources */,
 				18DFE52A16697F1500792C2E /* Credits.rtf in Resources */,
 				18DFE53016697F1600792C2E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A12EB3B187C5E77002AAD6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB49187C5E77002AAD6F /* InfoPlist.strings in Resources */,
+				4A12EB51187C5E77002AAD6F /* Images.xcassets in Resources */,
+				4A12EB6D187DB3CB002AAD6F /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A12EB54187C5E77002AAD6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB62187C5E77002AAD6F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +359,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A12EB39187C5E77002AAD6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB4F187C5E77002AAD6F /* AppDelegate.m in Sources */,
+				4A12EB4B187C5E77002AAD6F /* main.m in Sources */,
+				4A12EB70187DB417002AAD6F /* ViewController.m in Sources */,
+				4A12EB6B187C6007002AAD6F /* SLColorArt.m in Sources */,
+				4A12EB71187DB7B4002AAD6F /* PCFadedImageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A12EB52187C5E77002AAD6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A12EB64187C5E77002AAD6F /* ColorArt_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A12EB5C187C5E77002AAD6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A12EB3C187C5E77002AAD6F /* ColorArt_iOS */;
+			targetProxy = 4A12EB5B187C5E77002AAD6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18DFE52216697F1500792C2E /* InfoPlist.strings */ = {
@@ -208,6 +412,22 @@
 				18DFE52F16697F1600792C2E /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		4A12EB47187C5E77002AAD6F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A12EB48187C5E77002AAD6F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4A12EB60187C5E77002AAD6F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A12EB61187C5E77002AAD6F /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -290,6 +510,148 @@
 			};
 			name = Release;
 		};
+		4A12EB65187C5E77002AAD6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorArt_iOS/ColorArt_iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ColorArt_iOS/ColorArt_iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4A12EB66187C5E77002AAD6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorArt_iOS/ColorArt_iOS-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ColorArt_iOS/ColorArt_iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4A12EB67187C5E77002AAD6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColorArt.app/Contents/MacOS/ColorArt";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorArt_iOS/ColorArt_iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ColorArt_iOSTests/ColorArt_iOSTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4A12EB68187C5E77002AAD6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColorArt.app/Contents/MacOS/ColorArt";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorArt_iOS/ColorArt_iOS-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ColorArt_iOSTests/ColorArt_iOSTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -310,6 +672,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4A12EB69187C5E77002AAD6F /* Build configuration list for PBXNativeTarget "ColorArt_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A12EB65187C5E77002AAD6F /* Debug */,
+				4A12EB66187C5E77002AAD6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4A12EB6A187C5E77002AAD6F /* Build configuration list for PBXNativeTarget "ColorArt_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A12EB67187C5E77002AAD6F /* Debug */,
+				4A12EB68187C5E77002AAD6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

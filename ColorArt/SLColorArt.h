@@ -17,12 +17,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SLColorArt : NSObject
-@property(retain, readonly) NSColor *backgroundColor;
-@property(retain, readonly) NSColor *primaryColor;
-@property(retain, readonly) NSColor *secondaryColor;
-@property(retain, readonly) NSColor *detailColor;
-@property(nonatomic, copy) NSImage *scaledImage;
+#if TARGET_OS_IPHONE
+typedef CGSize NSCGSize;
+typedef UIColor NSUIColor;
+typedef UIImage NSUIImage;
+#else
+typedef NSSize NSCGSize;
+typedef NSColor NSUIColor;
+typedef NSImage NSUIImage;
+#endif
 
-- (id)initWithImage:(NSImage*)image scaledSize:(NSSize)size;
+@interface SLColorArt : NSObject
+@property(retain, readonly) NSUIColor *backgroundColor;
+@property(retain, readonly) NSUIColor *primaryColor;
+@property(retain, readonly) NSUIColor *secondaryColor;
+@property(retain, readonly) NSUIColor *detailColor;
+@property(nonatomic, copy) NSUIImage *scaledImage;
+
+- (id)initWithImage:(NSUIImage*)image scaledSize:(NSCGSize)size;
 @end

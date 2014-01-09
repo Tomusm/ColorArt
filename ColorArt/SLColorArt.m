@@ -19,13 +19,17 @@
 
 #define kColorThresholdMinimumPercentage 0.01
 
+#if TARGET_OS_IPHONE
+@interface UIColor (DarkAddition)
+#else
 @interface NSColor (DarkAddition)
+#endif
 
 - (BOOL)pc_isDarkColor;
-- (BOOL)pc_isDistinct:(NSColor*)compareColor;
-- (NSColor*)pc_colorWithMinimumSaturation:(CGFloat)saturation;
+- (BOOL)pc_isDistinct:(NSUIColor*)compareColor;
+- (NSUIColor*)pc_colorWithMinimumSaturation:(CGFloat)saturation;
 - (BOOL)pc_isBlackOrWhite;
-- (BOOL)pc_isContrastingColor:(NSColor*)color;
+- (BOOL)pc_isContrastingColor:(NSUIColor*)color;
 
 @end
 
@@ -33,26 +37,26 @@
 @interface PCCountedColor : NSObject
 
 @property (assign) NSUInteger count;
-@property (strong) NSColor *color;
+@property (strong) NSUIColor *color;
 
-- (id)initWithColor:(NSColor*)color count:(NSUInteger)count;
+- (id)initWithColor:(NSUIColor*)color count:(NSUInteger)count;
 
 @end
 
 
 @interface SLColorArt ()
 
-@property NSSize scaledSize;
-@property(retain,readwrite) NSColor *backgroundColor;
-@property(retain,readwrite) NSColor *primaryColor;
-@property(retain,readwrite) NSColor *secondaryColor;
-@property(retain,readwrite) NSColor *detailColor;
+@property NSCGSize scaledSize;
+@property(retain,readwrite) NSUIColor *backgroundColor;
+@property(retain,readwrite) NSUIColor *primaryColor;
+@property(retain,readwrite) NSUIColor *secondaryColor;
+@property(retain,readwrite) NSUIColor *detailColor;
 @end
 
 
 @implementation SLColorArt
 
-- (id)initWithImage:(NSImage*)image scaledSize:(NSSize)size
+- (id)initWithImage:(NSUIImage*)image scaledSize:(NSCGSize)size
 {
     self = [super init];
 
@@ -60,7 +64,7 @@
     {
         self.scaledSize = size;
 		
-		NSImage *finalImage = [self scaleImage:image size:size];
+		NSUIImage *finalImage = [self scaleImage:image size:size];
 		self.scaledImage = finalImage;
 		
 		[self analyzeImage:image];
@@ -70,23 +74,42 @@
 }
 
 
-- (NSImage*)scaleImage:(NSImage*)image size:(NSSize)scaledSize
+- (NSUIImage*)scaleImage:(NSUIImage*)image size:(NSCGSize)scaledSize
 {
-    NSSize imageSize = [image size];
-    NSImage *squareImage = [[NSImage alloc] initWithSize:NSMakeSize(imageSize.width, imageSize.width)];
-    NSImage *scaledImage = [[NSImage alloc] initWithSize:scaledSize];
+    NSCGSize imageSize = [image size];
+#if TARGET_OS_IPHONE
+    UIImage *squareImage, *scaledImage;
+    CGRect drawRect;
+    CGRect (*MakeRect)(CGFloat, CGFloat, CGFloat, CGFloat) = CGRectMake;
+#else
+    NSUIImage *squareImage = [[NSImage alloc] initWithSize:NSMakeSize(imageSize.width, imageSize.width)];
+    NSUIImage *scaledImage = [[NSImage alloc] initWithSize:scaledSize];
     NSRect drawRect;
+    NSRect (*MakeRect)(CGFloat, CGFloat, CGFloat, CGFloat) = NSMakeRect;
+#endif
 
     // make the image square
-    if ( imageSize.height > imageSize.width )
-    {
-        drawRect = NSMakeRect(0, imageSize.height - imageSize.width, imageSize.width, imageSize.width);
-    }
-    else
-    {
-        drawRect = NSMakeRect(0, 0, imageSize.height, imageSize.height);
+    if (imageSize.height > imageSize.width) {
+        drawRect = MakeRect(0, imageSize.height - imageSize.width, imageSize.width, imageSize.width);
+    } else {
+        drawRect = MakeRect(0, 0, imageSize.height, imageSize.height);
     }
 
+#if TARGET_OS_IPHONE
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageSize.width, imageSize.width), NO, 0.0);
+    [image drawInRect:drawRect];
+    squareImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+
+    // scale the image to the desired size
+    UIGraphicsBeginImageContextWithOptions(scaledSize, NO, 0.0);
+    [squareImage drawInRect:MakeRect(0, 0, scaledSize.width, scaledSize.height)];
+    scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    UIImage *finalImage = scaledImage;
+#else
     [squareImage lockFocus];
     [image drawInRect:NSMakeRect(0, 0, imageSize.width, imageSize.width) fromRect:drawRect operation:NSCompositeSourceOver fraction:1.0];
     [squareImage unlockFocus];
@@ -101,18 +124,19 @@
 
     CGImageRef cgImage = [scaledImage CGImageForProposedRect:NULL context:nil hints:nil];
     NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:cgImage];
-    NSImage *finalImage = [[NSImage alloc] initWithSize:scaledImage.size];
+    NSUIImage *finalImage = [[NSUIImage alloc] initWithSize:scaledImage.size];
     [finalImage addRepresentation:bitmapRep];
+#endif
     return finalImage;
 }
 
-- (void)analyzeImage:(NSImage*)anImage
+- (void)analyzeImage:(NSUIImage*)anImage
 {
     NSCountedSet *imageColors = nil;
-	NSColor *backgroundColor = [self findEdgeColor:anImage imageColors:&imageColors];
-	NSColor *primaryColor = nil;
-	NSColor *secondaryColor = nil;
-	NSColor *detailColor = nil;
+	NSUIColor *backgroundColor = [self findEdgeColor:anImage imageColors:&imageColors];
+	NSUIColor *primaryColor = nil;
+	NSUIColor *secondaryColor = nil;
+	NSUIColor *detailColor = nil;
 	BOOL darkBackground = [backgroundColor pc_isDarkColor];
 
 	[self findTextColors:imageColors primaryColor:&primaryColor secondaryColor:&secondaryColor detailColor:&detailColor backgroundColor:backgroundColor];
@@ -121,27 +145,27 @@
 	{
 		NSLog(@"missed primary");
 		if ( darkBackground )
-			primaryColor = [NSColor whiteColor];
+			primaryColor = [NSUIColor whiteColor];
 		else
-			primaryColor = [NSColor blackColor];
+			primaryColor = [NSUIColor blackColor];
 	}
 
 	if ( secondaryColor == nil )
 	{
 		NSLog(@"missed secondary");
 		if ( darkBackground )
-			secondaryColor = [NSColor whiteColor];
+			secondaryColor = [NSUIColor whiteColor];
 		else
-			secondaryColor = [NSColor blackColor];
+			secondaryColor = [NSUIColor blackColor];
 	}
 
 	if ( detailColor == nil )
 	{
 		NSLog(@"missed detail");
 		if ( darkBackground )
-			detailColor = [NSColor whiteColor];
+			detailColor = [NSUIColor whiteColor];
 		else
-			detailColor = [NSColor blackColor];
+			detailColor = [NSUIColor blackColor];
 	}
 
     self.backgroundColor = backgroundColor;
@@ -150,25 +174,60 @@
     self.detailColor = detailColor;
 }
 
-- (NSColor*)findEdgeColor:(NSImage*)image imageColors:(NSCountedSet**)colors
+- (NSUIColor*)findEdgeColor:(NSUIImage*)image imageColors:(NSCountedSet**)colors
 {
-	NSBitmapImageRep *imageRep = [[image representations] lastObject];
+#if TARGET_OS_IPHONE
+    if (! image ) {
+        return nil;
+    }
+    CFMutableDataRef inputData = ({
+        CGDataProviderRef provider = CGImageGetDataProvider(image.CGImage);
+        CFDataRef data = CGDataProviderCopyData(provider);
+        
+        CFMutableDataRef mutableData =  CFDataCreateMutableCopy(0, 0, data);
+        CFRelease(data);
+        mutableData;
+    });
+
+    size_t bits = ({
+        size_t bpp = CGImageGetBitsPerPixel(image.CGImage);
+        size_t bpc = CGImageGetBitsPerComponent(image.CGImage);
+        bpp / bpc;
+    });
+    size_t pixelsWide = CGImageGetWidth(image.CGImage);
+    size_t pixelsHigh = CGImageGetHeight(image.CGImage);
+
+    const UInt8 *data = CFDataGetBytePtr(inputData);
+#else
+    NSBitmapImageRep *imageRep = [[image representations] lastObject];
 
 	if ( ![imageRep isKindOfClass:[NSBitmapImageRep class]] ) // sanity check
 		return nil;
 
 	NSInteger pixelsWide = [imageRep pixelsWide];
 	NSInteger pixelsHigh = [imageRep pixelsHigh];
+#endif
 
 	NSCountedSet *imageColors = [[NSCountedSet alloc] initWithCapacity:pixelsWide * pixelsHigh];
 	NSCountedSet *leftEdgeColors = [[NSCountedSet alloc] initWithCapacity:pixelsHigh];
 
 	for ( NSUInteger x = 0; x < pixelsWide; x++ )
-	{
+    {
 		for ( NSUInteger y = 0; y < pixelsHigh; y++ )
-		{
-			NSColor *color = [imageRep colorAtX:x y:y];
-
+        {
+#if TARGET_OS_IPHONE
+            int pixelsInfo = ((pixelsWide * y) + x) * bits;
+            UInt8 red = data[pixelsInfo];
+            UInt8 green = data[pixelsInfo + 1];
+            UInt8 blue = data[pixelsInfo + 2];
+            UInt8 alpha = 255;
+            if (bits == 4) {
+                alpha = data[pixelsInfo + 3];
+            }
+            UIColor *color = [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:alpha/255.0f];
+#else
+            NSColor *color = [imageRep colorAtX:x y:y];
+#endif
 			if ( x == 0 )
 			{
 				[leftEdgeColors addObject:color];
@@ -177,12 +236,15 @@
 			[imageColors addObject:color];
 		}
 	}
+#if TARGET_OS_IPHONE
+    CFRelease(inputData);
+#endif
 
 	*colors = imageColors;
 
 
 	NSEnumerator *enumerator = [leftEdgeColors objectEnumerator];
-	NSColor *curColor = nil;
+	NSUIColor *curColor = nil;
 	NSMutableArray *sortedColors = [NSMutableArray arrayWithCapacity:[leftEdgeColors count]];
 
 	while ( (curColor = [enumerator nextObject]) != nil )
@@ -235,10 +297,10 @@
 }
 
 
-- (void)findTextColors:(NSCountedSet*)colors primaryColor:(NSColor**)primaryColor secondaryColor:(NSColor**)secondaryColor detailColor:(NSColor**)detailColor backgroundColor:(NSColor*)backgroundColor
+- (void)findTextColors:(NSCountedSet*)colors primaryColor:(NSUIColor**)primaryColor secondaryColor:(NSUIColor**)secondaryColor detailColor:(NSUIColor**)detailColor backgroundColor:(NSUIColor*)backgroundColor
 {
 	NSEnumerator *enumerator = [colors objectEnumerator];
-	NSColor *curColor = nil;
+	NSUIColor *curColor = nil;
 	NSMutableArray *sortedColors = [NSMutableArray arrayWithCapacity:[colors count]];
 	BOOL findDarkTextColor = ![backgroundColor pc_isDarkColor];
 
@@ -291,11 +353,19 @@
 @end
 
 
+#if TARGET_OS_IPHONE
+@implementation UIColor (DarkAddition)
+#else
 @implementation NSColor (DarkAddition)
+#endif
 
 - (BOOL)pc_isDarkColor
 {
-	NSColor *convertedColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+#if TARGET_OS_IPHONE
+    UIColor *convertedColor = self;
+#else
+    NSColor *convertedColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+#endif
 	CGFloat r, g, b, a;
 
 	[convertedColor getRed:&r green:&g blue:&b alpha:&a];
@@ -311,10 +381,15 @@
 }
 
 
-- (BOOL)pc_isDistinct:(NSColor*)compareColor
+- (BOOL)pc_isDistinct:(NSUIColor*)compareColor
 {
+#if TARGET_OS_IPHONE
+    UIColor *convertedColor = self;
+    UIColor *convertedCompareColor = compareColor;
+#else
 	NSColor *convertedColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
 	NSColor *convertedCompareColor = [compareColor colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+#endif
 	CGFloat r, g, b, a;
 	CGFloat r1, g1, b1, a1;
 
@@ -343,10 +418,13 @@
 }
 
 
-- (NSColor*)pc_colorWithMinimumSaturation:(CGFloat)minSaturation
+- (NSUIColor*)pc_colorWithMinimumSaturation:(CGFloat)minSaturation
 {
+#if TARGET_OS_IPHONE
+    UIColor *tempColor = self;
+#else
 	NSColor *tempColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
-
+#endif
 	if ( tempColor != nil )
 	{
 		CGFloat hue = 0.0;
@@ -358,7 +436,12 @@
 
 		if ( saturation < minSaturation )
 		{
-			return [NSColor colorWithCalibratedHue:hue saturation:minSaturation brightness:brightness alpha:alpha];
+
+#if TARGET_OS_IPHONE
+            return [UIColor colorWithHue:hue saturation:minSaturation brightness:brightness alpha:alpha];
+#else
+            return [NSColor colorWithCalibratedHue:hue saturation:minSaturation brightness:brightness alpha:alpha];
+#endif
 		}
 	}
 
@@ -368,7 +451,11 @@
 
 - (BOOL)pc_isBlackOrWhite
 {
+#if TARGET_OS_IPHONE
+    UIColor *tempColor = self;
+#else
 	NSColor *tempColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+#endif
 
 	if ( tempColor != nil )
 	{
@@ -387,10 +474,15 @@
 }
 
 
-- (BOOL)pc_isContrastingColor:(NSColor*)color
+- (BOOL)pc_isContrastingColor:(NSUIColor*)color
 {
+#if TARGET_OS_IPHONE
+    UIColor *backgroundColor = self;
+    UIColor *foregroundColor = color;
+#else
 	NSColor *backgroundColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
 	NSColor *foregroundColor = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+#endif
 
 	if ( backgroundColor != nil && foregroundColor != nil )
 	{
@@ -423,7 +515,7 @@
 
 @implementation PCCountedColor
 
-- (id)initWithColor:(NSColor*)color count:(NSUInteger)count
+- (id)initWithColor:(NSUIColor*)color count:(NSUInteger)count
 {
 	self = [super init];
 

@@ -17,25 +17,86 @@
 #import "PCFadedImageView.h"
 
 @implementation PCFadedImageView
-
-@synthesize image = _image;
-
-
-
-- (void)drawRect:(NSRect)dirtyRect
+#if TARGET_OS_IPHONE
 {
-	NSSize imageSize = [self.image size];
-    NSRect bounds = self.bounds;
-	NSRect imageRect = NSMakeRect(bounds.size.width - imageSize.width, bounds.size.height - imageSize.height, imageSize.width, imageSize.height);
+    CAGradientLayer *_gradientLayer;
+}
+#endif
 
+//@synthesize image = _image;
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+#if TARGET_OS_IPHONE
+    [_gradientLayer removeFromSuperlayer];
+    _gradientLayer = nil;
+#endif
+}
+
+#if TARGET_OS_IPHONE
+- (void)drawRect:(CGRect)rect
+#else
+- (void)drawRect:(NSRect)dirtyRect
+#endif
+{
+
+#if TARGET_OS_IPHONE
+    CGSize imageSize;
+    CGRect bounds;
+    CGRect imageRect;
+    CGRect (*MakeRect)(CGFloat, CGFloat, CGFloat, CGFloat) = CGRectMake;
+#else
+    NSSize imageSize;
+    NSRect bounds;
+    NSRect imageRect;
+    NSRect (*MakeRect)(CGFloat, CGFloat, CGFloat, CGFloat) = NSMakeRect;
+#endif
+    imageSize = [self.image size];
+    bounds = self.bounds;
+    imageRect = MakeRect(bounds.size.width - imageSize.width, bounds.size.height - imageSize.height, imageSize.width * 1.6, imageSize.height*1.6);
+
+
+#if TARGET_OS_IPHONE
+//    [self.image drawInRect:self.bounds];
+    [self.image drawInRect:imageRect];
+#else
 	[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+#endif
 
 	// lazy way to get fade color
+#if TARGET_OS_IPHONE
+	UIColor *backgroundColor = [self backgroundColor];
+    if (!backgroundColor) return;
+#else
 	NSColor *backgroundColor = [[self window] backgroundColor];
-		
+#endif
+
+#if TARGET_OS_IPHONE
+    if (_gradientLayer == nil) {
+        _gradientLayer = [CAGradientLayer layer];
+        CAGradientLayer* gradient = [CAGradientLayer layer];
+        gradient.frame = ({
+            CGRect frame = self.bounds;
+            frame.size.height *= 0.8;
+            frame;
+        });
+        gradient.colors = [NSArray arrayWithObjects:
+                           (id)[backgroundColor CGColor], //開始色
+                           (id)[backgroundColor CGColor],
+                           (id)[[backgroundColor colorWithAlphaComponent:0.01] CGColor], //終了色
+                           nil];
+        [gradient setStartPoint:CGPointMake(0.5, 0.0)];
+        [gradient setEndPoint:CGPointMake(0.5, 1.0)]; // 0 degree
+        [self.layer addSublayer:gradient];
+        _gradientLayer = gradient;
+    }
+#else
+
 	NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:backgroundColor, 0.0, backgroundColor, .01, [backgroundColor colorWithAlphaComponent:0.05], 1.0, nil];
 
 	[gradient drawInRect:imageRect angle:0.0];
+
+#endif
 }
 
 
